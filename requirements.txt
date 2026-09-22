@@ -1,0 +1,21 @@
+# Untere Schranken statt exakter Pins: Python 3.14 braucht frische Wheels.
+# Fuer ein Deployment spaeter: `pip freeze > requirements.lock.txt` und die
+# Lock-Datei im Docker-Image verwenden - dann sind Builds reproduzierbar.
+
+# --- Core ---
+fastapi>=0.118
+uvicorn[standard]>=0.37
+pydantic>=2.12
+pydantic-settings>=2.11
+
+# --- HTTP / async ---
+httpx>=0.28          # async HTTP-Client (moderner als aiohttp, gleiche Konzepte)
+
+# --- Caching ---
+redis>=6.0           # optional, SQLite-Fallback in core/cache.py
+
+# --- Dev / Test ---
+pytest>=8.4
+pytest-asyncio>=1.0
+respx>=0.22          # HTTP-Mocking fuer Tests gegen externe APIs
+ruff>=0.14
